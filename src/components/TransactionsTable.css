@@ -1,0 +1,136 @@
+.search{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.search input{
+    background-color: rgb(177, 143, 55);
+    border: none;
+    height: 30px;
+    border-radius: 15px;
+
+}
+input::placeholder {
+    color:black; /* Change the placeholder text color */
+    opacity: 1; /* Make sure the opacity is set to 1 for full color */
+    
+    text-align: center;
+}
+
+.search input:focus {
+   /* background-color: red; */
+   font-weight: 100;
+   border: none;
+   text-align: center;
+}
+/* Dropdown.css */
+.custom-dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.custom-dropdown .form-select {
+    background-color: #F0B231; /* Yellow background */
+    color: #4A4A4A; /* Dark gray text */
+    padding:5px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 120px; /* Adjust width as needed */
+    height: 33px;
+    outline: none;
+    cursor: pointer;
+}
+
+.custom-dropdown .form-select:focus {
+    box-shadow: none;
+}
+
+.custom-dropdown::after {
+    content: '\25BC'; /* Down arrow */
+    font-size: 1rem;
+    color: #F0B231; /* Yellow color */
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+/* table style */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    background-color:rgba(245, 234, 111, 0.95);
+    border-collapse: collapse;
+    border-radius: 20px;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 4px solid black;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 5px solid black;
+    border-top: none;
+}
+
+.table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+}
+
+.table .table {
+    background-color: #fff;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table-hover .table-hover tbody tr:hover {
+    background-color: #eaeaea;
+}
+
+
+.table td, .table th {
+    border-left: 4px solid #000; /* Adds a border to the left side of each cell */
+    border-right: 4px solid #000; /* Adds a border to the right side of each cell */
+}
+
+.table tr td:first-child, .table tr th:first-child {
+    border-left: none; /* Removes the border from the first column */
+}
+
+.table tr td:last-child, .table tr th:last-child {
+    border-right: none; /* Removes the border from the last column */
+}
+.table {
+    border: none;
+}
+.table img{
+    width: 100px ;
+    height: 100px;
+}
+.page{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bold;
+}
+.page button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+
+}

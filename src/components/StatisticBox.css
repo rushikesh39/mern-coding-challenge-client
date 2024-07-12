@@ -1,0 +1,10 @@
+.statistics{
+    /* border: 1px solid black; */
+    background-color: rgb(234, 171, 76);
+    width: 250px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    
+}
