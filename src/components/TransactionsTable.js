@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useCallback } from "react";
 import { getTransactions } from "../services/api";
 import "./TransactionsTable.css";
 import StatisticsBox from "./StatisticsBox";
@@ -12,17 +12,19 @@ const TransactionsTable = () => {
   const [month, setMonth] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
-    fetchTransactions();
-  }, [search, page, month]);
-
-  const fetchTransactions = async () => {
+  const fetchTransactions = useCallback(async () => {
     const params = { search, page, month };
     const { data } = await getTransactions(params);
     console.log("data", data);
     setTotalPages(data.totalPages);
     setTransactions(data.transactions);
-  };
+  },[search, page, month]);
+
+  useEffect(() => {
+    fetchTransactions();
+  },[fetchTransactions] );
+
+ 
 
   console.log("month in table", month);
   return (

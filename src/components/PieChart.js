@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { getPieChartData } from '../services/api';
 
@@ -7,16 +7,18 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF'];
 const PieChartComponent = ({ month }) => {
     const [data, setData] = useState([]);
 
-    useEffect(() => {
-        fetchPieChartData();
-    }, [month]);
-
-    const fetchPieChartData = async () => {
+    const fetchPieChartData =useCallback( async () => {
         const params = { month };
         const { data } = await getPieChartData(params);
         console.log("Piachart data", data);
         setData(data);
-    };
+    },[month]);
+
+    useEffect(() => {
+        fetchPieChartData();
+    }, [fetchPieChartData]);
+
+    
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const monthName = monthNames[month - 1];
     return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
@@ -7,17 +7,16 @@ import { getBarChartData } from '../services/api';
 const BarChartComponent = ({ month }) => {
     const [data, setData] = useState([]);
 
-    useEffect(() => {
-
-        fetchBarChartData();
-    }, [month]);
-
-    const fetchBarChartData = async () => {
+    const fetchBarChartData = useCallback(async () => {
         const params = { month };
         const { data } = await getBarChartData(params);
-        console.log("Barchat data", data);
+        console.log("Bar chart data", data);
         setData(data);
-    };
+    }, [month]);
+
+    useEffect(() => {
+        fetchBarChartData();
+    }, [fetchBarChartData]);
 
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const monthName = monthNames[month - 1];

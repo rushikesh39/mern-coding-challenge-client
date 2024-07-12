@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useCallback } from 'react';
 import { getStatistics } from '../services/api';
 import './StatisticBox.css'
 
@@ -7,16 +7,17 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
 const StatisticsBox = ({ month }) => {
     const [statistics, setStatistics] = useState({});
 
-    useEffect(() => {
-        fetchStatistics();
-    }, [month]);
-
-    const fetchStatistics = async () => {
+    const fetchStatistics = useCallback(async () => {
         const params = { month };
         const { data } = await getStatistics(params);
         console.log("statistics data", data);
         setStatistics(data);
-    };
+    },[month]);
+    useEffect(() => {
+        fetchStatistics();
+    }, [fetchStatistics]);
+
+    
 
     const monthName = monthNames[month - 1]; // Get the month name from the array
 
